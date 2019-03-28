@@ -26,6 +26,49 @@ document.addEventListener("DOMContentLoaded", function() {
                 const pingElem = document.createElement('div');
                 pingElem.innerHTML = resp.data;
                 document.body.appendChild(pingElem);
+                console.log("Successful request was made")
+            })
+
+        .catch(function(error) {
+            console.log('Something went wrong', error)
+
+
+        }).then(function(resp) {
+            const pingElem = document.createElement('div');
+            pingElem.innerHTML = resp.data;
+            document.body.appendChild(pingElem);
+            console.log("Hey that request finished")
+        })
+
+    });
+
+    const countBtn = document.getElementById("count_button")
+
+    countBtn.addEventListener('click', function() {
+        console.log("Count button was clicked!")
+        const request = axios.get('http://intro-ajax-api.herokuapp.com/count')
+            .then(function(resp) {
+                const countElem = document.createElement('div');
+                countElem.innerHTML = resp.data;
+                document.body.appendChild(countElem)
+                console.log("Successful request was made dawg")
+            })
+    })
+
+    const timeBtn = document.getElementById("time_button")
+
+    timeBtn.addEventListener('click', function() {
+        console.log("Time button was clicked")
+        const request = axios.get('http://intro-ajax-api.herokuapp.com/time', {
+                params: {
+                    timezone: 'Pacific/Honolulu'
+                }
+            })
+            .then(function(resp) {
+                const timeElem = document.createElement('div');
+                timeElem.innerHTML = resp.data;
+                document.body.appendChild(timeElem)
+                console.log("Woop woop woooop")
             })
     })
 
