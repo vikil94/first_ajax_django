@@ -72,4 +72,17 @@ document.addEventListener("DOMContentLoaded", function() {
             })
     })
 
+    const carBtn = document.getElementById("car_button")
+
+    carBtn.addEventListener('click', function() {
+        console.log("Car Button was clicked!")
+        const request = axios.get('http://intro-ajax-api.herokuapp.com/a_car')
+            .then(function(resp) {
+                const carElem = document.createElement('ul')
+                carElem.innerHTML = resp.data;
+                document.body.appendChild(carElem)
+                console.log("Loook its a car woooo")
+            })
+    })
+
 });
